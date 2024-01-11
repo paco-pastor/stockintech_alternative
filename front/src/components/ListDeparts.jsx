@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 import FormAjout from "./FormAjout";
-
+// TODO : add edit button, lint code
 const ListDeparts = () => {
   const [departements, setDepartements] = useState([]);
 
