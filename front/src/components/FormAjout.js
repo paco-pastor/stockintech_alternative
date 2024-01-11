@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 
 const MyForm = () => {
   const [inputValue, setInputValue] = useState('');
@@ -7,10 +8,17 @@ const MyForm = () => {
     setInputValue(event.target.value);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    // Effectue l'action de soumission ici (ex: envoi à un serveur, etc.)
-    console.log('Formulaire soumis avec la valeur :', inputValue);
+    try {
+      const response = await axios.post('http://localhost:8000/nouveau_departement', {
+        nom: inputValue
+      });
+
+      console.log('Nouveau département créé avec succès', response.data);
+    } catch (error) {
+      console.error('Erreur lors de la création du département :', error);
+    }
   };
 
   return (
