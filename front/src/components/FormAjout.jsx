@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const MyForm = () => {
+const MyForm = ( {fetchDepartements} ) => {
   const [inputValue, setInputValue] = useState('');
 
   const handleInputChange = (event) => {
@@ -14,6 +14,7 @@ const MyForm = () => {
       const response = await axios.post('http://localhost:8000/nouveau_departement', {
         nom: inputValue
       });
+      fetchDepartements();
 
       console.log('Nouveau département créé avec succès', response.data);
     } catch (error) {
