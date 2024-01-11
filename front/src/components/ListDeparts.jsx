@@ -24,8 +24,8 @@ const ListDeparts = () => {
 
   return (
     <div>
-      <FormAjout />
       <h2>Liste des Départements</h2>
+      <FormAjout />
       <ul>
         {departements.map((departement) => (
           <li>

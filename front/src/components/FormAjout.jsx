@@ -24,14 +24,14 @@ const MyForm = () => {
   return (
     <form onSubmit={handleSubmit}>
       <label>
-        Champ de texte :
+        Ajouter un département : 
         <input
           type="text"
           value={inputValue}
           onChange={handleInputChange}
         />
       </label>
-      <button type="submit">Soumettre</button>
+      <button type="submit">Ajouter</button>
     </form>
   );
 };
