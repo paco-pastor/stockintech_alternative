@@ -24,6 +24,11 @@
   color: white;
 }
 
+.logo {
+  height: 30%;
+  width: 30%;
+}
+
 .App-link {
   color: #61dafb;
 }

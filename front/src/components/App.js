@@ -1,16 +1,16 @@
-import logo from './images/logo.svg';
 import './styles/App.css';
 
 import Accueil from './Accueil';
-import FormAjout from './FormAjout';
+import APropos from './APropos';
+import ListDeparts from './ListDeparts';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
         <Accueil/>
-        <FormAjout/>
+        <APropos/>
+        <ListDeparts/>
       </header>
     </div>
   );
