@@ -15,12 +15,25 @@ const ListDeparts = () => {
     }
   };
 
-  const handleDelete = async (code) => {
+  const handleEdit = async (code) => {
+    const nom = window.prompt('Nouveau nom du département');
     try {
-      await axios.post('http://localhost:8000/supprimer_departement/', {
+      await axios.post('http://localhost:8000/modifier_departement', {
+        nom: nom,
         code: code
       });
-      fetchDepartements(); // maybe
+      fetchDepartements();
+    } catch (error) {
+      console.error('Erreur lors de la modification du département :', error);
+    }
+  }
+
+  const handleDelete = async (code) => {
+    try {
+      await axios.post('http://localhost:8000/supprimer_departement', {
+        code: code
+      });
+      fetchDepartements();
     } catch (error) {
       console.error('Erreur lors de la suppression du département :', error);
     }
@@ -39,6 +52,7 @@ const ListDeparts = () => {
           <li key={departement.code}>
             {departement.code}. {departement.nom}
             <button className="listButton" onClick={() => handleDelete(departement.code)}>❌</button>
+            <button className="listButton" onClick={() => handleEdit(departement.code)}>✏️</button>
           </li>
         ))}
       </ul>

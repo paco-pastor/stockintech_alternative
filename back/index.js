@@ -52,6 +52,27 @@ app.post("/nouveau_departement", async (req, res) => {
   }
 });
 
+app.post("/modifier_departement", async (req, res) => {
+  try {
+    const nom = req.body.nom;
+    const codeDepartement = req.body.code;
+
+    const departement = await Departement.findOne({ code: codeDepartement });
+
+    if (!departement) {
+      return res.status(404).json({ message: "Département non trouvé" });
+    }
+
+    departement.nom = nom;
+    await departement.save();
+
+    res.status(200).json({ message: "Département modifié avec succès" });
+  } catch (error) {
+    console.error("Erreur lors de la modification du département :", error);
+    res.status(500).json({ message: "Erreur serveur" });
+  }
+});
+
 app.post("/supprimer_departement", async (req, res) => {
 
   try {
